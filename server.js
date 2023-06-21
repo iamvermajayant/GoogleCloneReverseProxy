@@ -12,10 +12,10 @@ config.api_key = process.env.SERPAPI_KEY;
 
 
 const app = express();
-app.use(cors({ origin: "https://googleproxy-v0su.onrender.com/" }));
+app.use(cors({ origin: ['https://googleproxy-v0su.onrender.com/', '*']}));
 app.use(json());
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
   res.status(200).json({ message: "response to default get request" });
@@ -27,6 +27,8 @@ app.get("/another-route", (req, res) => {
 
 app.get("/keyword-search/:q", search, (req, res) => {
   res.status(200).json(res.locals.result);
+  console.log("no");
+  res.send('yes');
 });
 
 app.get("/search", getResults, search, (req, res) => {
