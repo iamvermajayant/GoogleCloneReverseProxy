@@ -12,7 +12,7 @@ config.api_key = process.env.SERPAPI_KEY;
 
 
 const app = express();
-app.use(cors({ origin: "http://yourdomain.com" }));
+app.use(cors({ origin: "*" }));
 app.use(json());
 
 const PORT = process.env.PORT || 3000;
